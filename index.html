@@ -1,18 +1,88 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>For My Love 💖</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #ff6cac, #ff7eb3);
+        }
+
+        .grid-container {
+            display: grid;
+            gap: 3px;
+            grid-template-columns: repeat(25, 20px);
+        }
+
+        .grid-item {
+            width: 20px;
+            height: 20px;
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 3px;
+            transition: all 0.3s ease;
+        }
+
+        .active {
+            background: #e2b2c5 !important;
+            box-shadow: 0 0 10px #ff0066;
+        }
+    </style>
 </head>
 <body>
-    <div class="container">
-        <h1>To My Amazing & Gorgeous Girl🌹</h1>
-        <h1>Ghadghoudty ˚✧🎀˚✧</h1>
-        <p id="message">You make every moment magical. I love you endlessly!</p>
-        <p> ♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡ </p>
-        <button onclick="showSurprise()">Click for a Surprise!</button>
-    </div>
-    <script src="script.js"></script>
+    <div class="grid-container" id="grid"></div>
+
+    <script>
+        // Correct "I ♥ YOU" grid pattern (5x25 grid)
+        const gridData = [
+            [1,1,1, 0, 0,0,1,1,1,1,0,1,1,1,1,0,0 ,0, 1,1,1,0,1,1,1],  // I
+            [0,1,0, 0, 0,1,1,1,1,1,1,1,1,1,1,1,0 ,0, 1,1,1,0,1,1,1],  // ♥
+            [0,1,0, 0, 1,1,1,1,1,1,1,1,1,1,1,1,1 ,0, 1,1,1,0,1,1,1],  // ♥
+            [0,1,0, 0, 1,1,1,1,1,1,1,1,1,1,1,1,1 ,0, 1,1,1,0,1,1,1],
+            [0,1,0, 0, 0,1,1,1,1,1,1,1,1,1,1,1,0 ,0, 1,1,1,0,1,1,1],  // Y
+            [0,1,0, 0, 0,0,1,1,1,1,1,1,1,1,1,0,0 ,0, 1,1,1,0,1,1,1],
+            [0,1,0, 0, 0,0,0,1,1,1,1,1,1,1,0,0,0 ,0, 1,1,1,0,1,1,1],
+            [0,1,0, 0, 0,0,0,0,1,1,1,1,1,0,0,0,0 ,0, 1,1,1,0,1,1,1],
+            [0,1,0, 0, 0,0,0,0,0,1,1,1,0,0,0,0,0 ,0, 1,1,1,1,1,1,1],
+            [1,1,1, 0, 0,0,0,0,0,0,1,0,0,0,0,0,0 ,0, 1,1,1,1,1,1,1]   // U
+        ];
+
+        const container = document.getElementById('grid');
+        const rows = gridData.length;
+        const cols = gridData[0].length;
+
+        // Create grid
+        for (let i = 0; i < rows; i++) {
+            for (let j = 0; j < cols; j++) {
+                const cell = document.createElement('div');
+                cell.className = 'grid-item';
+                if (gridData[i][j] === 1) cell.dataset.active = true;
+                container.appendChild(cell);
+            }
+        }
+
+        // Correct left-to-right animation
+        function animateCells() {
+            const cells = document.querySelectorAll('.grid-item');
+            let delay = 0;
+            
+            // Row-by-row, left-to-right activation
+            for (let i = 0; i < rows; i++) {
+                for (let j = 0; j < cols; j++) {
+                    const index = i * cols + j;
+                    if (cells[index].dataset.active) {
+                        setTimeout(() => {
+                            cells[index].classList.add('active');
+                        }, delay * 20);
+                        delay++;
+                    }
+                }
+            }
+        }
+
+        setTimeout(animateCells, 500);
+    </script>
 </body>
 </html>
