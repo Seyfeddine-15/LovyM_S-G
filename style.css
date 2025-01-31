@@ -1,0 +1,67 @@
+body {
+    background: url('Pink Cute Dreamy Girl Academics Affirmation Desktop Wallpaper.png') no-repeat center center fixed;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    font-family: 'Arial', sans-serif;
+}
+
+.container {
+    text-align: center;
+    background: rgba(235, 213, 224, 0.6); /* Fancy transparent pink */
+    padding: 2em;
+    border-radius: 15px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    position: absolute;
+    top: 45%; /* Moves the box higher */
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 60%;
+    max-width: 500px;
+}
+
+
+button {
+    background: #ff4d6a;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1.1em;
+}
+
+button:hover {
+    background: #ff3352;
+}
+
+
+.surprise-box {
+    position: absolute;
+    top: 45%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80%;
+    max-width: 600px;
+    text-align: center;
+    background: rgba(255, 192, 203, 0.9); /* Fancy soft pink */
+    padding: 2em;
+    border-radius: 15px;
+    box-shadow: 0 0 20px rgba(255, 105, 180, 0.5);
+    font-size: 1.4em;
+    font-weight: bold;
+    color: #ff4d6a;
+    border: 4px solid #ff69b4;
+    line-height: 1.8em;
+    animation: fadeIn 1s ease-in-out;
+}
+
+/* Fade-in effect */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translate(-50%, -55%); }
+    to { opacity: 1; transform: translate(-50%, -50%); }
+}
+
