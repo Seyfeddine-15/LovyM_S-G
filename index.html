@@ -1,6 +1,38 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <script>
+        const firebaseConfig = {
+        apiKey: "AIzaSyBdVUFeld9V6EhBF5byxpgKIhk4f38_a1o",
+        authDomain: "sghlovym.firebaseapp.com",
+        projectId: "sghlovym",
+        storageBucket: "sghlovym.firebasestorage.app",
+        messagingSenderId: "673883447618",
+        appId: "1:673883447618:web:ce4def646ddd89f20ea8db"
+        };
+        function trackVisit() {
+            db.collection("visitors").add({
+                timestamp: new Date().toISOString(),
+                userAgent: navigator.userAgent, // Tracks device/browser
+                screenSize: `${window.screen.width}x${window.screen.height}`,
+                referrer: document.referrer || "Direct",
+                })
+            .then(() => {
+                console.log("Visitor logged successfully!");
+                })
+            .catch((error) => {
+                console.error("Error logging visitor: ", error);
+                });
+            }
+
+            // Run tracking when page loads
+            window.onload = trackVisit;
+
+    </script>
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js"></script>
+
     <style>
         body {
             margin: 0;
