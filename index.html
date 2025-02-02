@@ -1,245 +1,129 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Seyf's L🩷ve to his Goregeous GHADA ❣️</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Our love 🩷</title>
   <style>
-    /* Reset defaults */
-    * {
+    /* Base styles with the original dark, starry background */
+    body {
       margin: 0;
       padding: 0;
-      box-sizing: border-box;
-    }
-
-    /* Cozy background: a soft pastel gradient */
-    body {
-      height: 100vh;
       overflow: hidden;
-      background: linear-gradient(135deg, #fceabb, #f8b500);
-      font-family: sans-serif;
+      background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+      font-family: 'Indie Flower', cursive;
+      color: #ff69b4; /* All text colored in pink */
       position: relative;
-    }
-
-    /* The big heart (boy’s color) that will be revealed behind the scene */
-    .big-heart {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%) scale(0);
-      z-index: 0;
-      filter: drop-shadow(0px 4px 8px rgba(0,0,0,0.3));
-      animation: showBigHeart 2s forwards;
-      animation-delay: 2s;
-    }
-    @keyframes showBigHeart {
-      0% {
-        transform: translate(-50%, -50%) scale(0);
-        opacity: 0;
-      }
-      100% {
-        transform: translate(-50%, -50%) scale(1);
-        opacity: 1;
-      }
-    }
-
-    /* The scene container for the characters and heart kisses */
-    .scene {
-      position: relative;
-      width: 100vw;
       height: 100vh;
+    }
+    
+    /* Stars container covering the full viewport */
+    #star-container {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 0;
+    }
+    
+    /* Star styling with a twinkling animation */
+    .star {
+      position: absolute;
+      background: #fff;
+      border-radius: 50%;
+      opacity: 0.8;
+      animation: twinkle 2s infinite ease-in-out;
+    }
+    
+    @keyframes twinkle {
+      0%, 100% { opacity: 0.8; }
+      50% { opacity: 0.2; }
+    }
+    
+    /* Main content container (moon and text) */
+    .content {
+      position: relative;
       z-index: 1;
-      /* Zoom out the scene so the big heart becomes apparent */
-      animation: zoomOut 2s forwards;
-      animation-delay: 2s;
-      transform-origin: center;
+      text-align: center;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 100%;
     }
-    @keyframes zoomOut {
-      0% {
-        transform: scale(1);
-      }
-      100% {
-        transform: scale(0.5);
-      }
+    
+    /* Glowing moon element */
+    .moon {
+      width: 150px;
+      height: 150px;
+      margin: 0 auto;
+      border-radius: 50%;
+      background: radial-gradient(circle at 30% 30%, #fff, #f0e6d2);
+      box-shadow: 0 0 20px 5px rgba(255, 255, 255, 0.5);
+      animation: float 3s ease-in-out infinite;
     }
-
-    /* Initial styling for both characters */
-    .character {
-      position: absolute;
-      width: 100px; /* width of the SVG */
+    
+    /* Float animation for the moon */
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-20px); }
     }
-    /* Initial positions – characters start apart */
-    .girl {
-      bottom: 20%;
-      left: 35%;
-      /* Move to the heart after the scene transition */
-      animation: moveGirl 1s forwards;
-      animation-delay: 2s;
-    }
-    .boy {
-      bottom: 20%;
-      left: 55%;
-      /* Move to the heart after the scene transition */
-      animation: moveBoy 1s forwards;
-      animation-delay: 2s;
-    }
-    /* Keyframes to move characters so that they stand on top of the big heart */
-    @keyframes moveGirl {
-      from { left: 35%; bottom: 20%; }
-      to   { left: 35%; bottom: 90%; }
-    }
-    @keyframes moveBoy {
-      from { left: 55%; bottom: 20%; }
-      to   { left: 40%; bottom: 90%; }
-    }
-
-    /* Heart kiss elements from the girl */
-    .heart-kiss {
-      position: absolute;
-      left: 48%; /* Starting near the girl's hand */
-      bottom: 42%;
-      z-index: 2;
+    
+    /* Heading styling with fade-in effect */
+    h1 {
+      font-size: 2.5em;
+      margin-top: 20px;
       opacity: 0;
-      animation: moveHeart 2s forwards;
+      animation: fadeIn 2s ease-in-out forwards;
     }
-    /* Staggered delays for the three heart kisses */
-    .heart-kiss:nth-of-type(1) { animation-delay: 0.5s; }
-    .heart-kiss:nth-of-type(2) { animation-delay: 0.8s; }
-    .heart-kiss:nth-of-type(3) { animation-delay: 1.1s; }
-
-    @keyframes moveHeart {
-      0% {
-        left: 48%;
-        bottom: 42%;
-        transform: scale(0.5);
-        opacity: 0;
-      }
-      10% {
-        opacity: 1;
-      }
-      50% {
-        left: 55%;
-        bottom: 50%;
-        transform: scale(1);
-      }
-      80% {
-        left: 62%;
-        bottom: 42%;
-      }
-      100% {
-        opacity: 0;
-      }
-    }
-
-    /* Boy's giggle animation on his SVG */
-    .boy svg {
-      animation: giggle 0.5s forwards;
-      animation-delay: 1.5s;
-      transform-origin: center;
-    }
-    @keyframes giggle {
-      0%   { transform: rotate(0deg); }
-      25%  { transform: rotate(10deg); }
-      50%  { transform: rotate(-10deg); }
-      75%  { transform: rotate(10deg); }
-      100% { transform: rotate(0deg); }
-    }
-
-    /* Message text box styling in the bottom right corner */
-    .message {
-      position: absolute;
-      right: 20px;
-      bottom: 20px;
-      background: rgba(255, 245, 219, 0.9);
-      padding: 10px 15px;
-      border-radius: 8px;
-      font-family: sans-serif;
-      font-size: 16px;
-      color: #333;
-      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+    
+    /* Paragraph styling with a slight delay for fade-in */
+    p {
+      font-size: 1.2em;
+      margin-top: 10px;
       opacity: 0;
-      animation: showMessage 1s forwards;
-      animation-delay: 5s;
-      z-index: 2;
+      animation: fadeIn 2.5s ease-in-out forwards;
     }
-    @keyframes showMessage {
-      0% { opacity: 0; transform: translateY(10px); }
-      100% { opacity: 1; transform: translateY(0); }
+    
+    /* Fade-in keyframes for text appearance */
+    @keyframes fadeIn {
+      to { opacity: 1; }
     }
   </style>
 </head>
 <body>
-  <!-- The big heart with custom text -->
-  <div class="big-heart">
-    <svg width="800" height="800" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
-      <!-- Heart shape -->
-      <path d="M23.6,4.2c-3.2,0-6,2-7.6,4.9C14.4,6.2,11.6,4.2,8.4,4.2C3.8,4.2,0,8,0,12.6c0,9.6,16,15.4,16,15.4S32,22.2,32,12.6
-               C32,8,28.2,4.2,23.6,4.2z" fill="brown"/>
-      <!-- Custom text in multiple lines using a fancy light brown color -->
-      <text x="50%" y="35%" text-anchor="middle" fill="#D2B48C" font-size="1" font-family="cursive">
-        My Love for u
-        <tspan x="50%" dy="4">💖❣️😍❣️😍❣️🩷</tspan>
-        <tspan x="50%" dy="4">ya A7la haja saretli f 7yeti, Ro7i w 3inaya</tspan>
-        <tspan x="50%" dy="4">S&amp;Gh ❣️❣️❣️</tspan>
-      </text>
-    </svg>
+  <!-- Container for the twinkling stars -->
+  <div id="star-container"></div>
+  
+  <!-- Main content: moon and romantic text -->
+  <div class="content">
+    <div class="moon"></div>
+    <h1>I love you to the moon and back</h1>
+    <p>🩷 Our love shines brighter than the stars above 🩷</p>
   </div>
 
-  <!-- Message text box in the bottom right corner -->
-  <div class="message">
-    Ma3adech dhaher eni khater ghare9 f 7obek y Zin 💖😍🩷
-  </div>
-
-  <!-- Scene with our characters and heart kisses -->
-  <div class="scene">
-    <!-- Girl character (sketch-style using SVG) -->
-    <div class="character girl">
-      <svg width="100" height="150" viewBox="0 0 100 150" xmlns="http://www.w3.org/2000/svg">
-        <!-- Head -->
-        <circle cx="50" cy="30" r="20" stroke="deeppink" stroke-width="2" fill="none"/>
-        <!-- Body -->
-        <line x1="50" y1="50" x2="50" y2="100" stroke="deeppink" stroke-width="2"/>
-        <!-- Arms -->
-        <line x1="30" y1="60" x2="70" y2="60" stroke="deeppink" stroke-width="2"/>
-        <!-- Legs -->
-        <line x1="50" y1="100" x2="30" y2="140" stroke="deeppink" stroke-width="2"/>
-        <line x1="50" y1="100" x2="70" y2="140" stroke="deeppink" stroke-width="2"/>
-      </svg>
-    </div>
-
-    <!-- Boy character (sketch-style using SVG) -->
-    <div class="character boy">
-      <svg width="100" height="150" viewBox="0 0 100 150" xmlns="http://www.w3.org/2000/svg">
-        <!-- Head -->
-        <circle cx="50" cy="30" r="20" stroke="saddlebrown" stroke-width="2" fill="none"/>
-        <!-- Body -->
-        <line x1="50" y1="50" x2="50" y2="100" stroke="saddlebrown" stroke-width="2"/>
-        <!-- Arms -->
-        <line x1="30" y1="60" x2="70" y2="60" stroke="saddlebrown" stroke-width="2"/>
-        <!-- Legs -->
-        <line x1="50" y1="100" x2="30" y2="140" stroke="saddlebrown" stroke-width="2"/>
-        <line x1="50" y1="100" x2="70" y2="140" stroke="saddlebrown" stroke-width="2"/>
-      </svg>
-    </div>
-
-    <!-- Three heart kisses from the girl -->
-    <div class="heart-kiss">
-      <svg width="30" height="30" viewBox="0 0 32 29.6" xmlns="http://www.w3.org/2000/svg">
-        <path d="M23.6,0c-3.2,0-6,2-7.6,4.9C14.4,2,11.6,0,8.4,0C3.8,0,0,3.8,0,8.4c0,9.6,16,21.2,16,21.2S32,18,32,8.4
-                 C32,3.8,28.2,0,23.6,0z" fill="pink"/>
-      </svg>
-    </div>
-    <div class="heart-kiss">
-      <svg width="30" height="30" viewBox="0 0 32 29.6" xmlns="http://www.w3.org/2000/svg">
-        <path d="M23.6,0c-3.2,0-6,2-7.6,4.9C14.4,2,11.6,0,8.4,0C3.8,0,0,3.8,0,8.4c0,9.6,16,21.2,16,21.2S32,18,32,8.4
-                 C32,3.8,28.2,0,23.6,0z" fill="pink"/>
-      </svg>
-    </div>
-    <div class="heart-kiss">
-      <svg width="30" height="30" viewBox="0 0 32 29.6" xmlns="http://www.w3.org/2000/svg">
-        <path d="M23.6,0c-3.2,0-6,2-7.6,4.9C14.4,2,11.6,0,8.4,0C3.8,0,0,3.8,0,8.4c0,9.6,16,21.2,16,21.2S32,18,32,8.4
-                 C32,3.8,28.2,0,23.6,0z" fill="pink"/>
-      </svg>
-    </div>
-  </div>
+  <script>
+    // Create a number of twinkling stars at random positions
+    function createStars(numStars) {
+      const container = document.getElementById('star-container');
+      for (let i = 0; i < numStars; i++) {
+        const star = document.createElement('div');
+        star.className = 'star';
+        // Randomize the star's position
+        star.style.left = Math.random() * 100 + '%';
+        star.style.top = Math.random() * 100 + '%';
+        // Randomize star size between 1px and 4px
+        const size = Math.random() * 3 + 1;
+        star.style.width = size + 'px';
+        star.style.height = size + 'px';
+        // Randomize the animation duration for varied twinkling
+        star.style.animationDuration = 2 + Math.random() * 3 + 's';
+        container.appendChild(star);
+      }
+    }
+    
+    // Generate 150 stars on page load
+    createStars(150);
+  </script>
 </body>
 </html>
